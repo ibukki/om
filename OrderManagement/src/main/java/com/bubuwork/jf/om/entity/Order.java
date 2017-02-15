@@ -49,6 +49,10 @@ public class Order {
   @OneToMany(cascade=CascadeType.ALL, mappedBy="order", fetch=FetchType.LAZY)
   private List<OrderItem> items;
   
+  @Column(name="COMMENT", length=2000)
+  private String comment;
+  
+  
   /**
    * @return the id
    */
@@ -145,5 +149,19 @@ public class Order {
    */
   public void setChangeBy(String changeBy) {
     this.changeBy = changeBy;
+  }
+
+  /**
+   * @return the comment
+   */
+  public String getComment() {
+    return comment;
+  }
+
+  /**
+   * @param comment the comment to set
+   */
+  public void setComment(String comment) {
+    this.comment = comment;
   }
 }

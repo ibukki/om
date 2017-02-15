@@ -28,7 +28,7 @@ public class OrderItem {
   
   @Column(name="PRICE")
   private double price;
-
+  
   /**
    * @return the id
    */
