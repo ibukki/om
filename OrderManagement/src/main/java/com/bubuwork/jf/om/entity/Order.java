@@ -1,12 +1,16 @@
 package com.bubuwork.jf.om.entity;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,6 +35,9 @@ public class Order {
   @Column(name="CREATE_BY", length=100)
   private String createBy;
   
+  @Column(name="CHANGE_BY", length=100)
+  private String changeBy;
+  
   @Temporal(TemporalType.DATE)
   @Column(name = "CREATE_AT")
   private Date createAt;
@@ -38,6 +45,9 @@ public class Order {
   @Temporal(TemporalType.DATE)
   @Column(name = "LAST_MODIFY")
   private Date lastModify;
+  
+  @OneToMany(cascade=CascadeType.ALL, mappedBy="order", fetch=FetchType.LAZY)
+  private List<OrderItem> items;
   
   /**
    * @return the id
@@ -107,5 +117,33 @@ public class Order {
    */
   public void setLastModify(Date lastModify) {
     this.lastModify = lastModify;
+  }
+
+  /**
+   * @return the items
+   */
+  public List<OrderItem> getItems() {
+    return items;
+  }
+
+  /**
+   * @param items the items to set
+   */
+  public void setItems(List<OrderItem> items) {
+    this.items = items;
+  }
+
+  /**
+   * @return the changeBy
+   */
+  public String getChangeBy() {
+    return changeBy;
+  }
+
+  /**
+   * @param changeBy the changeBy to set
+   */
+  public void setChangeBy(String changeBy) {
+    this.changeBy = changeBy;
   }
 }
