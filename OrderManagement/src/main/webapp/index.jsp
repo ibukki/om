@@ -17,37 +17,48 @@
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
 <script src="static/js/jquery-3.2.0.min.js"></script>
 <script src="static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<style>
+	#content{
+		padding:5px;
+	}
+	
+	#content .input-row{
+		margin-top:5px;
+	}
+</style>
 </head>
 <body>
 	<div id="content">
-		<h2>Hello World! -- {{name}}</h2>
+		<h1>Order</h1>
+		<label for="car-model" class="input-row">Car Model</label>
+		<input type="text" id="car-model" class="form-control" placeholder="Car Model"/>
+		
+		<label for="license-number" class="input-row">License Number</label>
+		<input type="text" class="form-control" id="license-number"
+				placeholder="License Number"/>
+	
+		<label for="total-miles" class="input-row">Total Miles</label>
+		<input type="text" id="total-miles"
+				class="form-control" aria-label="Amount"/>
 
-		<div class="input-group">
-			<span class="input-group-addon" id="basic-addon1">@</span> <input
-				type="text" class="form-control" placeholder="Username"
-				aria-describedby="basic-addon1">
-		</div>
-
-		<div class="input-group">
-			<input type="text" class="form-control"
-				placeholder="Recipient's username" aria-describedby="basic-addon2">
-			<span class="input-group-addon" id="basic-addon2">@example.com</span>
-		</div>
-
-		<div class="input-group">
-			<span class="input-group-addon">$</span> <input type="text"
-				class="form-control" aria-label="Amount (to the nearest dollar)">
+		<label for="client-name" class="input-row">Client Name</label>
+		<input type="text" id="car-model" class="form-control" placeholder="Username" />
+		
+		<label for="phone-number" class="input-row">Phone</label>
+		<input type="text" id="phone-number" class="form-control" placeholder="Phone" />
+		
+		<label for="total-amount" class="input-row">Total Amount</label>
+		<div class="input-group input-row">
+			<span class="input-group-addon">¥</span>
+			<input type="text" id="total-amount"
+				class="form-control" aria-label="Amount (to the nearest rmb"/>
 			<span class="input-group-addon">.00</span>
 		</div>
-
-		<label for="basic-url">Your vanity URL</label>
-		<div class="input-group">
-			<span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
-			<input type="text" class="form-control" id="basic-url"
-				aria-describedby="basic-addon3">
-		</div>
-
+		
+		
+		<button type="button" class="btn btn-success form-control input-row" >Submit</button>
 	</div>
+	
 </body>
 <script src="static/js/controller/index.js"></script>
 </html>
