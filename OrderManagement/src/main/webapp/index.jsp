@@ -31,16 +31,24 @@
 	<div id="content">
 		<h1>Order</h1>
 		<label for="car-model" class="input-row">Car Model</label>
-		<input type="text" id="car-model" class="form-control" placeholder="Car Model"/>
+		<input type="text" id="car-model" class="form-control" placeholder="Car Model" v-bind:value="carModel"/>
 		
 		<label for="license-number" class="input-row">License Number</label>
 		<input type="text" class="form-control" id="license-number"
-				placeholder="License Number"/>
-	
+				placeholder="License Number" v-bind:value="licenseNumber"/>
+		
 		<label for="total-miles" class="input-row">Total Miles</label>
 		<input type="text" id="total-miles"
 				class="form-control" aria-label="Amount"/>
-
+		
+		<label for="maintian-type" class="input-row">Maintain Type</label>
+		<select class="form-control">
+			<option>Maintenance</option>
+			<option>Quick Fix</option>
+			<option selected>Tyre Repair</option>
+			<option>Other</option>
+		</select>
+		
 		<label for="client-name" class="input-row">Client Name</label>
 		<input type="text" id="car-model" class="form-control" placeholder="Username" />
 		
