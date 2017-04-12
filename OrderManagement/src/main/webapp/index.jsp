@@ -25,6 +25,10 @@
 	#content .input-row{
 		margin-top:5px;
 	}
+	
+	#content .button-row{
+		margin-top:15px;
+	}
 </style>
 </head>
 <body>
@@ -38,11 +42,11 @@
 				placeholder="License Number" v-bind:value="licenseNumber"/>
 		
 		<label for="total-miles" class="input-row">Total Miles</label>
-		<input type="text" id="total-miles"
-				class="form-control" aria-label="Amount"/>
+		<input type="text" id="total-miles" v-bind:value="totalMiles"
+				class="form-control" aria-label="Miles"/>
 		
 		<label for="maintian-type" class="input-row">Maintain Type</label>
-		<select class="form-control">
+		<select class="form-control" v-model="maintainType">
 			<option>Maintenance</option>
 			<option>Quick Fix</option>
 			<option selected>Tyre Repair</option>
@@ -50,21 +54,21 @@
 		</select>
 		
 		<label for="client-name" class="input-row">Client Name</label>
-		<input type="text" id="car-model" class="form-control" placeholder="Username" />
+		<input type="text" id="car-model" v-bind:value="clientName" class="form-control" placeholder="Client Name" />
 		
 		<label for="phone-number" class="input-row">Phone</label>
-		<input type="text" id="phone-number" class="form-control" placeholder="Phone" />
+		<input type="text" id="phone-number" v-bind:value="phone" class="form-control" placeholder="Phone" />
 		
 		<label for="total-amount" class="input-row">Total Amount</label>
 		<div class="input-group input-row">
 			<span class="input-group-addon">¥</span>
 			<input type="text" id="total-amount"
-				class="form-control" aria-label="Amount (to the nearest rmb"/>
+				class="form-control" v-bind:value="totalAmount" aria-label="Amount (to the nearest rmb"/>
 			<span class="input-group-addon">.00</span>
 		</div>
 		
 		
-		<button type="button" class="btn btn-success form-control input-row" >Submit</button>
+		<button type="button" v-bind:disabled="disableSubmitButton" v-on:click="submitOrder" class="btn btn-success form-control button-row" >Submit</button>
 	</div>
 	
 </body>
