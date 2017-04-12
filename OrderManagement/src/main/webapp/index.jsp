@@ -37,7 +37,7 @@
 </head>
 <body>
 	<div id="content">
-		<h1>Order</h1>
+		<h1 style="text-align:center">Order</h1>
 		<label for="car-model" class="input-row">Car Model</label>
 		<input type="text" id="car-model" class="form-control" placeholder="Car Model" v-bind:value="carModel"/>
 		
@@ -79,6 +79,14 @@
                </span>
         </div>
 		
+		<label for="checkout-date" class="input-row date-picker">Checkout Date</label>
+	    <div class='input-group date' id='checkoutDatePicker'>
+               <input type='text' class="form-control" v-model="checkoutDate"/>
+               <span class="input-group-addon">
+                   <span class="glyphicon glyphicon-calendar"></span>
+               </span>
+        </div>
+        
 		<label for="comment" class="input-row">Comment</label>
 		<div>
 			<textarea id="comment" class="form-control" v-model="comment"></textarea>

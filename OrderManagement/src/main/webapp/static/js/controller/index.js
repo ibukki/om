@@ -7,6 +7,7 @@ var viewData = {
 	phone:"13761202697",
 	totalAmount:"1",
 	inshopDate:"2017/01/01",
+	checkoutDate:"",
 	comment:"fix it",
 	disableSubmitButton:false
 }
@@ -27,8 +28,22 @@ $("#inshopDatePicker").datetimepicker({
     todayBtn:  1,
 	autoclose: 1,
 	todayHighlight: 1,
+	pickerPosition:"bottom-left",
 	startView: 2,
 	minView: 2,
 	forceParse: 0,
-	format:'yyyy/MM/dd'
+	format:'yyyy/mm/dd'
+});
+
+$("#checkoutDatePicker").datetimepicker({
+    locale: 'zh-CN',
+    weekStart: 1,
+    todayBtn:  1,
+	autoclose: 1,
+	todayHighlight: 1,
+	pickerPosition:"bottom-left",
+	startView: 2,
+	minView: 2,
+	forceParse: 0,
+	format:'yyyy/mm/dd'
 });
