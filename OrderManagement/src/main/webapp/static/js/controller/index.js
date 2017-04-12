@@ -17,7 +17,30 @@ var vm = new Vue({
 	data:viewData,
 	methods:{
 		submitOrder: function(){
-			console.log(this.licenseNumber);
+			if(this.validate()){
+				console.log(this.licenseNumber);
+			}
+		},
+		
+		validate: function(){
+			var passed = true;
+			if(!this.carModel){
+				passed = false;
+				return;
+			}
+			if(!this.licenseNumber){
+				passed = false;
+				return;
+			}
+			if(!this.maintainType){
+				passed = false;
+				return;
+			}
+			if(!this.totalAmount){
+				passed = false;
+				return;
+			}
+			return passed;
 		}
 	}
 });

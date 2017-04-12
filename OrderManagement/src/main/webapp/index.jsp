@@ -38,18 +38,18 @@
 <body>
 	<div id="content">
 		<h1 style="text-align:center">Order</h1>
-		<label for="car-model" class="input-row">Car Model</label>
-		<input type="text" id="car-model" class="form-control" placeholder="Car Model" v-bind:value="carModel"/>
+		<label for="car-model" class="input-row">Car Model</label><span>*</span>
+		<input type="text" id="car-model" class="form-control" placeholder="Car Model" v-model="carModel"/>
 		
-		<label for="license-number" class="input-row">License Number</label>
+		<label for="license-number" class="input-row">License Number</label><span>*</span>
 		<input type="text" class="form-control" id="license-number"
-				placeholder="License Number" v-bind:value="licenseNumber"/>
+				placeholder="License Number" v-model="licenseNumber"/>
 		
 		<label for="total-miles" class="input-row">Total Miles</label>
-		<input type="text" id="total-miles" v-bind:value="mileage"
+		<input type="text" id="total-miles" v-model="mileage"
 				class="form-control" aria-label="Miles"/>
 		
-		<label for="maintian-type" class="input-row">Maintain Type</label>
+		<label for="maintian-type" class="input-row">Maintain Type</label><span>*</span>
 		<select class="form-control" v-model="maintainType">
 			<option>Maintenance</option>
 			<option>Quick Fix</option>
@@ -58,16 +58,16 @@
 		</select>
 		
 		<label for="client-name" class="input-row">Client Name</label>
-		<input type="text" id="car-model" v-bind:value="owner" class="form-control" placeholder="Client Name" />
+		<input type="text" id="car-model" v-model="owner" class="form-control" placeholder="Client Name" />
 		
 		<label for="phone-number" class="input-row">Phone</label>
-		<input type="text" id="phone-number" v-bind:value="phone" class="form-control" placeholder="Phone" />
+		<input type="text" id="phone-number" v-model="phone" class="form-control" placeholder="Phone" />
 		
-		<label for="total-amount" class="input-row">Total Amount</label>
+		<label for="total-amount" class="input-row">Total Amount</label><span>*</span>
 		<div class="input-group input-row">
 			<span class="input-group-addon">¥</span>
 			<input type="text" id="total-amount"
-				class="form-control" v-bind:value="totalAmount" aria-label="Amount (to the nearest rmb"/>
+				class="form-control" v-model="totalAmount" aria-label="Amount (to the nearest rmb"/>
 			<span class="input-group-addon">.00</span>
 		</div>
 		  
