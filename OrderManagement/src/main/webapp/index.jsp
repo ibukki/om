@@ -13,10 +13,14 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="static/bootstrap-3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="static/bootstrap-3.3.7/css/bootstrap-datetimepicker.min.css">
 
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
 <script src="static/js/jquery-3.2.0.min.js"></script>
 <script src="static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="static/bootstrap-3.3.7/js/bootstrap-datetimepicker.min.js"></script>
+<script src="static/bootstrap-3.3.7/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 <style>
 	#content{
 		padding:5px;
@@ -42,7 +46,7 @@
 				placeholder="License Number" v-bind:value="licenseNumber"/>
 		
 		<label for="total-miles" class="input-row">Total Miles</label>
-		<input type="text" id="total-miles" v-bind:value="totalMiles"
+		<input type="text" id="total-miles" v-bind:value="mileage"
 				class="form-control" aria-label="Miles"/>
 		
 		<label for="maintian-type" class="input-row">Maintain Type</label>
@@ -54,7 +58,7 @@
 		</select>
 		
 		<label for="client-name" class="input-row">Client Name</label>
-		<input type="text" id="car-model" v-bind:value="clientName" class="form-control" placeholder="Client Name" />
+		<input type="text" id="car-model" v-bind:value="owner" class="form-control" placeholder="Client Name" />
 		
 		<label for="phone-number" class="input-row">Phone</label>
 		<input type="text" id="phone-number" v-bind:value="phone" class="form-control" placeholder="Phone" />
@@ -66,7 +70,19 @@
 				class="form-control" v-bind:value="totalAmount" aria-label="Amount (to the nearest rmb"/>
 			<span class="input-group-addon">.00</span>
 		</div>
+		  
+		<label for="inshop-date" class="input-row date-picker">Checkin Date</label>
+	    <div class='input-group date' id='inshopDatePicker'>
+               <input type='text' class="form-control" v-model="inshopDate"/>
+               <span class="input-group-addon">
+                   <span class="glyphicon glyphicon-calendar"></span>
+               </span>
+        </div>
 		
+		<label for="comment" class="input-row">Comment</label>
+		<div>
+			<textarea id="comment" class="form-control" v-model="comment"></textarea>
+		</div>
 		
 		<button type="button" v-bind:disabled="disableSubmitButton" v-on:click="submitOrder" class="btn btn-success form-control button-row" >Submit</button>
 	</div>

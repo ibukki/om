@@ -32,6 +32,9 @@ public class MaintainOrder {
   @Column(name="OWNER")
   private String owner;
   
+  @Column(name="MAINTAIN_TYPE", length=50)
+  private String maintainType;
+  
   @Column(name="PHONE")
   private String phone;
   
@@ -257,6 +260,20 @@ public class MaintainOrder {
    */
   public void setComment(String comment) {
     this.comment = comment;
+  }
+
+  /**
+   * @return the maintainType
+   */
+  public String getMaintainType() {
+    return maintainType;
+  }
+
+  /**
+   * @param maintainType the maintainType to set
+   */
+  public void setMaintainType(String maintainType) {
+    this.maintainType = maintainType;
   }
   
 }
