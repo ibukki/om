@@ -51,7 +51,8 @@
 		
 		<label for="maintian-type" class="input-row">Maintain Type</label><span>*</span>
 		<select class="form-control" v-model="maintainType">
-			<option>Maintenance</option>
+			<option>Small Maintenance</option>
+			<option>Big Maintenance</option>
 			<option>Quick Fix</option>
 			<option selected>Tyre Repair</option>
 			<option>Other</option>

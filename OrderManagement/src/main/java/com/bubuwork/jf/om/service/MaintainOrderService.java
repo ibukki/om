@@ -7,6 +7,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bubuwork.jf.om.bean.MaintainOrderSearchBean;
+import com.bubuwork.jf.om.bean.MaintainOrderSearchResult;
 import com.bubuwork.jf.om.dao.GenericOrderItemRepository;
 import com.bubuwork.jf.om.dao.MaintainOrderRepository;
 import com.bubuwork.jf.om.entity.GenericOrderItem;
@@ -51,6 +53,11 @@ public class MaintainOrderService {
     
     mOrderRepo.delete(orderId);
     gOrderItemRepo.deleteInBatch(dbItems);
+    
+  }
+  
+  @Transactional
+  public MaintainOrderSearchResult findMaintainOrders(MaintainOrderSearchBean searchBean){
     
   }
 }
