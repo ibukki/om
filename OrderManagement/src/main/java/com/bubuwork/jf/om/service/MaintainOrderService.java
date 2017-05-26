@@ -56,8 +56,4 @@ public class MaintainOrderService {
     
   }
   
-  @Transactional
-  public MaintainOrderSearchResult findMaintainOrders(MaintainOrderSearchBean searchBean){
-    
-  }
 }

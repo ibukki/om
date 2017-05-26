@@ -1,6 +1,7 @@
 package com.bubuwork.jf.om.bean;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -38,7 +39,13 @@ public class MaintainOrderSpecs {
     return new Specification<MaintainOrder>() {
       public Predicate toPredicate(Root<MaintainOrder> root, CriteriaQuery<?> query,
             CriteriaBuilder builder) {
-        return builder.in(root.get("maintainType").in(mTypes));
+        List<String> types = new ArrayList<String>();
+        if(mTypes != null && !mTypes.isEmpty()){
+          for (MaintainTypeEnum maintainTypeEnum : mTypes) {
+            types.add(maintainTypeEnum.toString());
+          }
+        }
+        return root.get("maintainType").in(types);
       }
     };
   }
