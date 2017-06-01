@@ -4,10 +4,10 @@ var viewData = {
 		licenseNumber:"沪BPF980",
 		mileage:"5000",
 		owner:"Ryan Huang",
-		maintainType:"Maintenance",
+		maintainType:"Small Maintenance",
 		phone:"13761202697",
 		totalAmount:"1",
-		inshopDate:"2017/01/01",
+		inshopDate:"2017-01-01",
 		checkoutDate:"",
 		comment:"fix it"
 	},
@@ -30,6 +30,8 @@ var vm = new Vue({
 				url:"morder/save",
 				method:"POST",
 				data:JSON.stringify({order:this.order}),
+				dataType:"json",
+				contentType:"application/json",
 				success:function(data){
 					alert("Order Saved");
 					that.disableSubmitButton = true;
@@ -38,6 +40,9 @@ var vm = new Vue({
 					
 				}
 			})
+		},
+		dateChange: function(){
+			console.debug(this);
 		},
 		validate: function(){
 			var passed = true;
@@ -72,7 +77,10 @@ $("#inshopDatePicker").datetimepicker({
 	startView: 2,
 	minView: 2,
 	forceParse: 0,
-	format:'yyyy/mm/dd'
+	format:'yyyy-MM-dd',
+	changeDate:function(){
+		console.log(this);
+	}
 });
 
 $("#checkoutDatePicker").datetimepicker({
@@ -85,5 +93,8 @@ $("#checkoutDatePicker").datetimepicker({
 	startView: 2,
 	minView: 2,
 	forceParse: 0,
-	format:'yyyy/mm/dd'
+	format:'yyyy-MM-dd',
+	changeDate:function(){
+		console.log(this);
+	}
 });

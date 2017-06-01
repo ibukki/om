@@ -74,7 +74,7 @@
 		  
 		<label for="inshop-date" class="input-row date-picker">Checkin Date</label>
 	    <div class='input-group date' id='inshopDatePicker'>
-               <input type='text' class="form-control" v-model="order.inshopDate"/>
+               <input type='text' class="form-control" v-model="order.inshopDate" v-on:change="dateChange"/>
                <span class="input-group-addon">
                    <span class="glyphicon glyphicon-calendar"></span>
                </span>
