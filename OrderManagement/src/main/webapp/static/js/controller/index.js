@@ -1,14 +1,16 @@
 var viewData = {
-	carModel:"Infinite",
-	licenseNumber:"沪BPF980",
-	mileage:"5000",
-	owner:"Ryan Huang",
-	maintainType:"Maintenance",
-	phone:"13761202697",
-	totalAmount:"1",
-	inshopDate:"2017/01/01",
-	checkoutDate:"",
-	comment:"fix it",
+	order: {
+		carModel:"Infinite",
+		licenseNumber:"沪BPF980",
+		mileage:"5000",
+		owner:"Ryan Huang",
+		maintainType:"Maintenance",
+		phone:"13761202697",
+		totalAmount:"1",
+		inshopDate:"2017/01/01",
+		checkoutDate:"",
+		comment:"fix it"
+	},
 	disableSubmitButton:false
 }
 
@@ -18,25 +20,40 @@ var vm = new Vue({
 	methods:{
 		submitOrder: function(){
 			if(this.validate()){
-				console.log(this.licenseNumber);
+				this.saveOrder();
 			}
 		},
 		
+		saveOrder: function(){
+			var that = this;
+			$.ajax({
+				url:"morder/save",
+				method:"POST",
+				data:JSON.stringify({order:this.order}),
+				success:function(data){
+					alert("Order Saved");
+					that.disableSubmitButton = true;
+				},
+				error:function(error){
+					
+				}
+			})
+		},
 		validate: function(){
 			var passed = true;
-			if(!this.carModel){
+			if(!this.order.carModel){
 				passed = false;
 				return;
 			}
-			if(!this.licenseNumber){
+			if(!this.order.licenseNumber){
 				passed = false;
 				return;
 			}
-			if(!this.maintainType){
+			if(!this.order.maintainType){
 				passed = false;
 				return;
 			}
-			if(!this.totalAmount){
+			if(!this.order.totalAmount){
 				passed = false;
 				return;
 			}

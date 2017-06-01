@@ -43,4 +43,11 @@ public class MaintainOrderController {
     searchResult.setOrders(mOrderList);
     return searchResult;
   }
+  
+  
+  @RequestMapping(value="save", method=RequestMethod.POST,consumes="application/json")
+  public @ResponseBody MaintainOrderVO saveOrder(@RequestBody MaintainOrderVO orderVO){
+    mOrderRepo.save(orderVO.getOrder());
+    return orderVO;
+  }
 }
