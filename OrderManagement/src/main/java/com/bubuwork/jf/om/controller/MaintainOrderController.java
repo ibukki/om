@@ -1,6 +1,7 @@
 package com.bubuwork.jf.om.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +48,10 @@ public class MaintainOrderController {
   
   @RequestMapping(value="save", method=RequestMethod.POST,consumes="application/json")
   public @ResponseBody MaintainOrderVO saveOrder(@RequestBody MaintainOrderVO orderVO){
-    mOrderRepo.save(orderVO.getOrder());
+    MaintainOrder order = orderVO.getOrder();
+    order.setCreateAt(new Date());
+    order.setLastModify(new Date());
+    mOrderRepo.save(order);
     return orderVO;
   }
 }
