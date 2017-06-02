@@ -110,7 +110,7 @@ public class MaintainOrderService {
     
     Pageable pageRequest = null;
     if(searchBean.getPageNum() <=0){
-      searchBean.setPageNum(1);
+      searchBean.setPageNum(0);
     }
     if(searchBean.getPageSize() <=0){
       searchBean.setPageSize(20);

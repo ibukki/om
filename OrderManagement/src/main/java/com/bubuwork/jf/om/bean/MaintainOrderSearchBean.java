@@ -28,7 +28,7 @@ public class MaintainOrderSearchBean implements Serializable{
   
   private String createBy;
   
-  private int pageNum = 1;
+  private int pageNum = 0;
   
   private int pageSize = 10;
 
