@@ -8,6 +8,9 @@ import javax.transaction.Transactional;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Service;
 
@@ -104,11 +107,20 @@ public class MaintainOrderService {
     
     MaintainOrderSearchResult searchResult = new MaintainOrderSearchResult();
     List<MaintainOrderVO> mOrderList = new ArrayList<MaintainOrderVO>();
-
-    List<MaintainOrder> dbOrderList = mOrderRepo
-        .findAll(Specifications.where(MaintainOrderSpecs.hasPhone(searchBean.getPhone()))
-            .and(MaintainOrderSpecs.hasMaintainTypes(searchBean.getOrderType())));
-
+    
+    Pageable pageRequest = null;
+    if(searchBean.getPageNum() <=0){
+      searchBean.setPageNum(1);
+    }
+    if(searchBean.getPageSize() <=0){
+      searchBean.setPageSize(20);
+    }
+    pageRequest = new PageRequest(searchBean.getPageNum(), searchBean.getPageSize());
+    Page<MaintainOrder> dbOrderPage = mOrderRepo
+        .findAll(Specifications.where(MaintainOrderSpecs.hasPhone(searchBean.getMobile()))
+            .and(MaintainOrderSpecs.hasMaintainTypes(searchBean.getOrderType())), pageRequest);
+    
+    List<MaintainOrder> dbOrderList = dbOrderPage.getContent();
     if (dbOrderList != null && !dbOrderList.isEmpty()) {
       for (MaintainOrder maintainOrder : dbOrderList) {
         MaintainOrderVO orderVO = new MaintainOrderVO();
@@ -118,6 +130,8 @@ public class MaintainOrderService {
     }
 
     searchResult.setOrders(mOrderList);
+    searchResult.setCount(dbOrderPage.getTotalElements());
+    searchResult.setPageSize(dbOrderPage.getTotalPages());
     return searchResult;
   }
 

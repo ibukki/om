@@ -9,6 +9,8 @@ public class MaintainOrderSearchResult {
   private List<MaintainOrderVO> orders;
   
   private long count;
+  
+  private long pageSize;
 
   /**
    * @return the orders
@@ -36,5 +38,19 @@ public class MaintainOrderSearchResult {
    */
   public void setCount(long count) {
     this.count = count;
+  }
+
+  /**
+   * @return the pageSize
+   */
+  public long getPageSize() {
+    return pageSize;
+  }
+
+  /**
+   * @param pageSize the pageSize to set
+   */
+  public void setPageSize(long pageSize) {
+    this.pageSize = pageSize;
   }
 }

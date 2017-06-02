@@ -14,23 +14,13 @@ import org.springframework.data.jpa.domain.Specification;
 import com.bubuwork.jf.om.entity.MaintainOrder;
 
 public class MaintainOrderSpecs {
-  
-  public static Specification<MaintainOrder> hasOwner(final String owner){
+ 
+  public static Specification<MaintainOrder> hasPhone(final String mobile){
     return new Specification<MaintainOrder>() {
       public Predicate toPredicate(Root<MaintainOrder> root, CriteriaQuery<?> query,
             CriteriaBuilder builder) {
         
-        return builder.equal(root.get("owner"), owner);        
-      }
-    };
-  }
-  
-  public static Specification<MaintainOrder> hasPhone(final String phone){
-    return new Specification<MaintainOrder>() {
-      public Predicate toPredicate(Root<MaintainOrder> root, CriteriaQuery<?> query,
-            CriteriaBuilder builder) {
-        
-        return builder.equal(root.get("phone"), phone);        
+        return builder.equal(root.get("mobile"), mobile);        
       }
     };
   }

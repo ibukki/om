@@ -1,8 +1,7 @@
 var viewData = {
 	order: {
 		mileage:"5000",
-		maintainType:"Small Maintenance",
-		
+		maintainType:"SMALL_MAINTENANCE",
 		totalAmount:"1",
 		inshopDate:"2017-01-01",
 		checkoutDate:"",
@@ -34,6 +33,9 @@ var vm = new Vue({
 			if(this.order.inshopDate && !this.order.checkoutDate){
 				this.order.checkoutDate = this.order.inshopDate;
 			}
+			this.order.mobile = this.user.mobile;
+			this.order.licenseNumber = this.car.licenseNumber;
+			
 			$.ajax({
 				url:"morder/save",
 				method:"POST",

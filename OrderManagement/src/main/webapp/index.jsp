@@ -51,11 +51,11 @@
 		
 		<label for="maintian-type" class="input-row">Maintain Type</label><span>*</span>
 		<select class="form-control" v-model="order.maintainType">
-			<option>Small Maintenance</option>
-			<option>Big Maintenance</option>
-			<option>Quick Fix</option>
-			<option selected>Tyre Repair</option>
-			<option>Other</option>
+			<option value="SMALL_MAINTENANCE">Small Maintenance</option>
+			<option value="BIG_MAINTENACE">Big Maintenance</option>
+			<option value="BIG_MAINTENACE">Quick Fix</option>
+			<option value="TYRE_REPAIR" selected>Tyre Repair</option>
+			<option value="OTHER" >Other</option>
 		</select>
 		
 		<label for="client-name" class="input-row">Client Name</label>

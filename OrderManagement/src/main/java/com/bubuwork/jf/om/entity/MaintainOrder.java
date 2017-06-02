@@ -29,7 +29,7 @@ public class MaintainOrder {
   @Column(name="MAINTAIN_TYPE", length=50)
   private String maintainType;
   
-  @Column(name="PHONE")
+  @Column(name="MOBILE")
   private String mobile;
   
   @Column(name="ISVIP")
