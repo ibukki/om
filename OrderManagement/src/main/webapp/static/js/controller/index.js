@@ -1,15 +1,20 @@
 var viewData = {
 	order: {
-		carModel:"Infinite",
-		licenseNumber:"沪BPF980",
 		mileage:"5000",
-		owner:"Ryan Huang",
 		maintainType:"Small Maintenance",
-		phone:"13761202697",
+		
 		totalAmount:"1",
 		inshopDate:"2017-01-01",
 		checkoutDate:"",
 		comment:"fix it"
+	},
+	user:{
+		userName:"Ryan Huang",
+		mobile:"13761202697"
+	},
+	car: {
+		carModel:"Infinite",
+		licenseNumber:"沪BPF980"
 	},
 	disableSubmitButton:false
 }
@@ -32,7 +37,7 @@ var vm = new Vue({
 			$.ajax({
 				url:"morder/save",
 				method:"POST",
-				data:JSON.stringify({order:this.order}),
+				data:JSON.stringify({order:this.order, user:this.user, car: this.car}),
 				dataType:"json",
 				contentType:"application/json",
 				success:function(data){
@@ -46,11 +51,11 @@ var vm = new Vue({
 		},
 		validate: function(){
 			var passed = true;
-			if(!this.order.carModel){
+			if(!this.car.carModel){
 				passed = false;
 				return;
 			}
-			if(!this.order.licenseNumber){
+			if(!this.car.licenseNumber){
 				passed = false;
 				return;
 			}

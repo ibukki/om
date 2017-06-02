@@ -19,9 +19,15 @@ public class Car {
   @Column(name="CAR_MODEL")
   public String carModel;
   
-  @Column(name="LICENSE_NUMBER")
+  /**
+   * 车牌
+   */
+  @Column(name="LICENSE_NUMBER", unique=true)
   public String licenseNumber;
   
+  /**
+   * 行驶证
+   */
   @Column(name="VEHICLE_NUMBER")
   public String vehicleNumber;
 

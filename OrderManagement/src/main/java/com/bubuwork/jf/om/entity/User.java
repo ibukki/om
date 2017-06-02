@@ -27,10 +27,10 @@ public class User {
   @Column(name="EMAIL")
   private String email;
   
-  @Column(name="MOBILE")
+  @Column(name="MOBILE", unique=true)
   private String mobile;
   
-  @Column(name="IDCARD")
+  @Column(name="IDCARD", unique=true)
   private String IDCard;
 
   /**

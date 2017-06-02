@@ -39,11 +39,11 @@
 	<div id="content">
 		<h1 style="text-align:center">Order</h1>
 		<label for="car-model" class="input-row">Car Model</label><span>*</span>
-		<input type="text" id="car-model" class="form-control" placeholder="Car Model" v-model="order.carModel"/>
+		<input type="text" id="car-model" class="form-control" placeholder="Car Model" v-model="car.carModel"/>
 		
 		<label for="license-number" class="input-row">License Number</label><span>*</span>
 		<input type="text" class="form-control" id="license-number"
-				placeholder="License Number" v-model="order.licenseNumber"/>
+				placeholder="License Number" v-model="car.licenseNumber"/>
 		
 		<label for="total-miles" class="input-row">Total Miles</label>
 		<input type="text" id="total-miles" v-model="order.mileage"
@@ -59,10 +59,10 @@
 		</select>
 		
 		<label for="client-name" class="input-row">Client Name</label>
-		<input type="text" id="car-model" v-model="order.owner" class="form-control" placeholder="Client Name" />
+		<input type="text" id="car-model" v-model="user.userName" class="form-control" placeholder="Client Name" />
 		
 		<label for="phone-number" class="input-row">Phone</label>
-		<input type="text" id="phone-number" v-model="order.phone" class="form-control" placeholder="Phone" />
+		<input type="text" id="phone-number" v-model="user.mobile" class="form-control" placeholder="Phone" />
 		
 		<label for="total-amount" class="input-row">Total Amount</label><span>*</span>
 		<div class="input-group input-row">

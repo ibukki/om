@@ -20,23 +20,17 @@ public class MaintainOrder {
   @Column(name="ID")
   private Long id;
   
-  @Column(name="CAR_MODEL")
-  private String carModel;
-  
   @Column(name="LICENSE_NUMBER")
   private String licenseNumber;
   
   @Column(name="MILEAGE")
   private String mileage;
-  
-  @Column(name="OWNER")
-  private String owner;
-  
+
   @Column(name="MAINTAIN_TYPE", length=50)
   private String maintainType;
   
   @Column(name="PHONE")
-  private String phone;
+  private String mobile;
   
   @Column(name="ISVIP")
   private Boolean isVip;
@@ -80,20 +74,7 @@ public class MaintainOrder {
     this.id = id;
   }
 
-  /**
-   * @return the carModel
-   */
-  public String getCarModel() {
-    return carModel;
-  }
-
-  /**
-   * @param carModel the carModel to set
-   */
-  public void setCarModel(String carModel) {
-    this.carModel = carModel;
-  }
-
+ 
   /**
    * @return the licenseNumber
    */
@@ -120,34 +101,6 @@ public class MaintainOrder {
    */
   public void setMileage(String mileage) {
     this.mileage = mileage;
-  }
-
-  /**
-   * @return the owner
-   */
-  public String getOwner() {
-    return owner;
-  }
-
-  /**
-   * @param owner the owner to set
-   */
-  public void setOwner(String owner) {
-    this.owner = owner;
-  }
-
-  /**
-   * @return the phone
-   */
-  public String getPhone() {
-    return phone;
-  }
-
-  /**
-   * @param phone the phone to set
-   */
-  public void setPhone(String phone) {
-    this.phone = phone;
   }
 
   /**
@@ -274,6 +227,20 @@ public class MaintainOrder {
    */
   public void setMaintainType(String maintainType) {
     this.maintainType = maintainType;
+  }
+
+  /**
+   * @return the mobile
+   */
+  public String getMobile() {
+    return mobile;
+  }
+
+  /**
+   * @param mobile the mobile to set
+   */
+  public void setMobile(String mobile) {
+    this.mobile = mobile;
   }
   
 }
