@@ -29,21 +29,18 @@
 	}
 		
 	#searchPanel{
-		background:#31708f;
+		background:#f3f3f3;
 		padding:5px;
+		border:1px solid #ccc;
 	}
 	
 	#searchPanel .irow{
 		width:100%;
-		height:4.5rem;
+		height:3rem;
 	}
 	
-	.rLabel{
-		width:100%;
-		line-height:1.5rem;
-		color:#ccc;
-		font-size:12px;
-		height:1.5rem;
+	.irow{
+		
 	}
 	
 	.rInput{
@@ -68,33 +65,28 @@
 	<div id="content">
 		<div id="searchPanel">
 			<div class="irow">
-				<div class="rLabel">Mobile:</div>
 				<div class="rInput">
-					<input type="text" class="form-control" />
+					<input type="text" placeholder="Mobile" class="form-control" />
 				</div>
 			</div>
 			<div class="irow">
-				<div class="rLabel">License Number:</div>
 				<div class="rInput">
-					<input type="text" class="form-control" />
+					<input type="text" placeholder="License Number" class="form-control" />
 				</div>
 			</div>
 			<div class="irow">
-				<div class="rLabel">Maintain Type:</div>
 				<div class="rInput">
-					<input type="text" class="form-control" />
+					<input type="text" placeholder="Maintain Type" class="form-control" />
 				</div>
 			</div>
 			<div class="irow">
-				<div class="rLabel">Start Date</div>
 				<div class="rInput">
-					<input type="text" class="form-control" />
+					<input type="text" placeholder="Start Date" class="form-control" />
 				</div>
 			</div>
 			<div class="irow">
-				<div class="rLabel">End Date</div>
 				<div class="rInput">
-					<input type="text" class="form-control" />
+					<input type="text" placeholder="End Date" class="form-control" />
 				</div>
 			</div>
 			<div class="brow">
