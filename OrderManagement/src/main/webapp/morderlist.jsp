@@ -81,12 +81,22 @@
 			</div>
 			<div class="irow">
 				<div class="rInput">
-					<input type="text" placeholder="Start Date" class="form-control" />
+					<div class='input-group date' id='startDatePicker'>
+			               <input type='text' class="form-control" placeholder="Start Date"/>
+			               <span class="input-group-addon">
+			                   <span class="glyphicon glyphicon-calendar"></span>
+			               </span>
+			        </div>
 				</div>
 			</div>
 			<div class="irow">
 				<div class="rInput">
-					<input type="text" placeholder="End Date" class="form-control" />
+					<div class='input-group date' id='endDatePicker'>
+			               <input type='text' class="form-control" placeholder="End Date"/>
+			               <span class="input-group-addon">
+			                   <span class="glyphicon glyphicon-calendar"></span>
+			               </span>
+			        </div>
 				</div>
 			</div>
 			<div class="brow">
