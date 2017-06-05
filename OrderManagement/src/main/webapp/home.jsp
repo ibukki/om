@@ -45,7 +45,6 @@
 	}
 	
 	#content{
-		padding:5px;
 	}
 	
 	#content .input-row{
