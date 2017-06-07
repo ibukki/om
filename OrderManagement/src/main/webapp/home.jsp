@@ -86,7 +86,7 @@
 	<div id="content">
 		<div id="actionPanel">
 			<div id="newMOrder" class="buttonHoder">
-				<button type="button" class="btn btn-primary btn-lg">
+				<button type="button" class="btn btn-primary btn-lg" v-on:click="createMOrder">
 				  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 				  New Order
 				</button>

@@ -70,6 +70,9 @@ var vm = new Vue({
 				return;
 			}
 			return passed;
+		},
+		backToHome: function(){
+			location.href="home.jsp";
 		}
 	}
 });

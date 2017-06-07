@@ -3,6 +3,9 @@ var vm = new Vue({
 	methods:{
 		goToOrderList:function(){
 			location.href="morderlist.jsp";
+		},
+		createMOrder:function(){
+			location.href="index.jsp";
 		}
 	}
 });

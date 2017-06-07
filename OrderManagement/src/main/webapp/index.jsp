@@ -33,11 +33,41 @@
 	#content .button-row{
 		margin-top:15px;
 	}
+	
+	#navi{
+		height:40px;
+		width:100%;
+		background:#666;
+	}
+	
+	#navi .backBtn{
+		margin-top: 7px;
+	    color: #f2f2f2;
+	    background: none;
+	    border: none;
+	}
+	
+	#navi .saveBtn{
+		margin-top: 7px;
+	    color: #f2f2f2;
+	    background: none;
+	    float:right;
+	    margin-right:5px;
+	    border: none;
+	}
 </style>
 </head>
 <body>
 	<div id="content">
-		<h1 style="text-align:center">Order</h1>
+		<div id="navi">
+			<button type="button" class="backBtn" v-on:click="backToHome">
+			  <span class="glyphicon glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back
+			</button>
+			
+			<button type="button" class="saveBtn" v-bind:disabled="disableSubmitButton" v-on:click="submitOrder">
+			  Save
+			</button>
+		</div>
 		<label for="car-model" class="input-row">Car Model</label><span>*</span>
 		<input type="text" id="car-model" class="form-control" placeholder="Car Model" v-model="car.carModel"/>
 		
@@ -93,7 +123,6 @@
 			<textarea id="comment" class="form-control" v-model="order.comment"></textarea>
 		</div>
 		
-		<button type="button" v-bind:disabled="disableSubmitButton" v-on:click="submitOrder" class="btn btn-success form-control button-row" >Submit</button>
 	</div>
 	
 </body>
