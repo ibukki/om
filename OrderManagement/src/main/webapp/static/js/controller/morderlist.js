@@ -1,3 +1,15 @@
+var viewData = {
+	orders:[
+		{id:"1", licenseNumber:"沪BPF980", inshopDate:"2017-01-01", amount:"1"},
+		{id:"2", licenseNumber:"皖BH181L", inshopDate:"2017-05-01", amount: "100"}
+	]
+}
+
+var vue = new Vue({
+	el:"#content",
+	data:viewData,
+});
+
 $("#startDatePicker").datetimepicker({
     locale: 'zh-CN',
     weekStart: 1,
