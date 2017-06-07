@@ -8,6 +8,11 @@ var viewData = {
 var vue = new Vue({
 	el:"#content",
 	data:viewData,
+	methods:{
+		backToHome: function(){
+			location.href="home.jsp";
+		}
+	}
 });
 
 $("#startDatePicker").datetimepicker({

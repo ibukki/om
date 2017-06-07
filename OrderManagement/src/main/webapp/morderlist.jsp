@@ -27,7 +27,20 @@
 		margin:0px;
 		padding:0px;
 	}
-		
+	
+	#navi{
+		height:40px;
+		width:100%;
+		background:#666;
+	}
+	
+	#navi button{
+		margin-top: 7px;
+	    color: #f2f2f2;
+	    background: none;
+	    border: none;
+	}
+	
 	#detailSearchPanel{
 		background:#f3f3f3;
 		padding:5px;
@@ -105,6 +118,11 @@
 </head>
 <body>
 	<div id="content">
+		<div id="navi">
+			<button type="button" class="backBtn" v-on:click="backToHome">
+			  <span class="glyphicon glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back
+			</button>
+		</div>
 		<div id="detailSearchPanel">
 			<div class="irow">
 				<div class="rInputLeft">
