@@ -16,7 +16,7 @@ $("#startDatePicker").datetimepicker({
     todayBtn:  1,
 	autoclose: 1,
 	todayHighlight: 1,
-	pickerPosition:"bottom-left",
+	pickerPosition:"bottom-right",
 	startView: 2,
 	minView: 2,
 	forceParse: 0,

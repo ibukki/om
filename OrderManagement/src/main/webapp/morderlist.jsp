@@ -48,6 +48,18 @@
 		height:3rem;
 	}
 	
+	.rInputLeft{
+		width:48%;
+		height:3rem;
+		float:left;
+	}
+	
+	.rInputRight{
+		width:48%;
+		height:3rem;
+		float:right;
+	}
+	
 	.brow{
 		height:3rem;
 	}
@@ -95,22 +107,21 @@
 	<div id="content">
 		<div id="detailSearchPanel">
 			<div class="irow">
-				<div class="rInput">
-					<input type="text" placeholder="Mobile" class="form-control" />
+				<div class="rInputLeft">
+					<input type="text" placeholder="Mobile or License Number" class="form-control" />
+				</div>
+				<div class="rInputRight">
+					<Select class="form-control" >
+						<option value="SMALL_MAINTENANCE" selected>Small Maintenance</option>
+						<option value="BIG_MAINTENACE">Big Maintenance</option>
+						<option value="BIG_MAINTENACE">Quick Fix</option>
+						<option value="TYRE_REPAIR">Tyre Repair</option>
+						<option value="OTHER" >Other</option>
+					</Select>
 				</div>
 			</div>
 			<div class="irow">
-				<div class="rInput">
-					<input type="text" placeholder="License Number" class="form-control" />
-				</div>
-			</div>
-			<div class="irow">
-				<div class="rInput">
-					<input type="text" placeholder="Maintain Type" class="form-control" />
-				</div>
-			</div>
-			<div class="irow">
-				<div class="rInput">
+				<div class="rInputLeft">
 					<div class='input-group date' id='startDatePicker'>
 			               <input type='text' class="form-control" placeholder="Start Date"/>
 			               <span class="input-group-addon">
@@ -118,9 +129,7 @@
 			               </span>
 			        </div>
 				</div>
-			</div>
-			<div class="irow">
-				<div class="rInput">
+				<div class="rInputRight">
 					<div class='input-group date' id='endDatePicker'>
 			               <input type='text' class="form-control" placeholder="End Date"/>
 			               <span class="input-group-addon">
@@ -130,9 +139,6 @@
 				</div>
 			</div>
 			<div class="brow">
-				<button type="button" class="btn btn-info btn-small">
-					<span class="glyphicon glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-				</button>
 				<button type="button" class="btn btn-info btn-small">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>Search
 				</button>
