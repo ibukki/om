@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specifications;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.bubuwork.jf.om.bean.MaintainOrderSearchBean;
@@ -83,7 +83,7 @@ public class MaintainOrderService {
       gOrderItemRepo.deleteInBatch(dbItems);
     }
 
-    gOrderItemRepo.save(uiItems);
+    gOrderItemRepo.saveAll(uiItems);
     orderVO.setItems(uiItems);
 
     return orderVO;
@@ -93,7 +93,7 @@ public class MaintainOrderService {
   public void deleteOrder(Long orderId) {
     List<GenericOrderItem> dbItems = gOrderItemRepo.findByOrderId(orderId);
 
-    mOrderRepo.delete(orderId);
+    mOrderRepo.deleteById(orderId);
     gOrderItemRepo.deleteInBatch(dbItems);
 
   }
@@ -115,9 +115,9 @@ public class MaintainOrderService {
     if(searchBean.getPageSize() <=0){
       searchBean.setPageSize(20);
     }
-    pageRequest = new PageRequest(searchBean.getPageNum(), searchBean.getPageSize());
+    pageRequest = PageRequest.of(searchBean.getPageNum(),searchBean.getPageSize());
     Page<MaintainOrder> dbOrderPage = mOrderRepo
-        .findAll(Specifications.where(MaintainOrderSpecs.hasPhone(searchBean.getMobile()))
+        .findAll(Specification.where(MaintainOrderSpecs.hasPhone(searchBean.getMobile()))
             .and(MaintainOrderSpecs.hasMaintainTypes(searchBean.getOrderType())), pageRequest);
     
     List<MaintainOrder> dbOrderList = dbOrderPage.getContent();
