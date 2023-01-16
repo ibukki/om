@@ -1,5 +1,7 @@
 package com.bubuwork.jf.om.entity;
 
+import lombok.Data;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +14,7 @@ import javax.persistence.Table;
 
 @Entity(name="SALES_ORDER_ITEM")
 @Table
+@Data
 public class OrderItem {
   
   @Id
@@ -21,7 +24,10 @@ public class OrderItem {
   
   @ManyToOne(cascade=CascadeType.DETACH)
   @JoinColumn(name="ORDER_ID", referencedColumnName="ID")
-  private Order order;
+  private SalesOrder order;
+
+  @Column(name="ITEM_NAME")
+  private String itemName;
   
   @Column(name="UNIT")
   private int unit;
@@ -29,60 +35,6 @@ public class OrderItem {
   @Column(name="PRICE")
   private double price;
   
-  /**
-   * @return the id
-   */
-  public Long getId() {
-    return id;
-  }
-
-  /**
-   * @param id the id to set
-   */
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  /**
-   * @return the order
-   */
-  public Order getOrder() {
-    return order;
-  }
-
-  /**
-   * @param order the order to set
-   */
-  public void setOrder(Order order) {
-    this.order = order;
-  }
-
-  /**
-   * @return the unit
-   */
-  public int getUnit() {
-    return unit;
-  }
-
-  /**
-   * @param unit the unit to set
-   */
-  public void setUnit(int unit) {
-    this.unit = unit;
-  }
-
-  /**
-   * @return the price
-   */
-  public double getPrice() {
-    return price;
-  }
-
-  /**
-   * @param price the price to set
-   */
-  public void setPrice(double price) {
-    this.price = price;
-  }
-  
+  @Column(name="CURRENCY")
+  private String currency;
 }

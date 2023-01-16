@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bubuwork.jf.om.entity.Order;
+import com.bubuwork.jf.om.entity.SalesOrder;
 import com.bubuwork.jf.om.service.OrderService;
 
 @Controller
@@ -18,7 +18,7 @@ public class OrderController {
   private OrderService orderService;
   
   @RequestMapping("list")
-  public @ResponseBody List<Order> listOrder(){
+  public @ResponseBody List<SalesOrder> listOrder(){
     return orderService.listOrders();
   }
   

@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
  */
 @Entity(name="SALES_ORDER")
 @Table
-public class Order {
+public class SalesOrder {
   
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
@@ -45,7 +45,13 @@ public class Order {
   @Temporal(TemporalType.DATE)
   @Column(name = "LAST_MODIFY")
   private Date lastModify;
-  
+
+  @Column(name="SUPPLIER_ID")
+  private Long supplierId;
+
+  @Column(name="TAX_RETURN")
+  private Double taxReturn;
+
   @OneToMany(cascade=CascadeType.ALL, mappedBy="order", fetch=FetchType.LAZY)
   private List<OrderItem> items;
   

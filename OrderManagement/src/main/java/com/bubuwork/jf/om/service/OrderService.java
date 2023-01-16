@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bubuwork.jf.om.dao.OrderRepository;
-import com.bubuwork.jf.om.entity.Order;
+import com.bubuwork.jf.om.entity.SalesOrder;
 
 @Service
 public class OrderService {
@@ -14,7 +14,7 @@ public class OrderService {
   @Autowired
   private OrderRepository orderRepository;
   
-  public List<Order> listOrders(){
+  public List<SalesOrder> listOrders(){
     return orderRepository.findAll();
   }
 }
