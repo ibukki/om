@@ -45,4 +45,8 @@ public class Supplier {
     @Temporal(TemporalType.DATE)
     @Column(name = "CREATE_AT")
     private Date createAt;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "LAST_MODIFY")
+    private Date lastModify;
 }

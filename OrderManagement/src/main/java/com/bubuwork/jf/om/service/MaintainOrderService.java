@@ -10,7 +10,7 @@ import com.bubuwork.jf.om.entity.Car;
 import com.bubuwork.jf.om.entity.GenericOrderItem;
 import com.bubuwork.jf.om.entity.MaintainOrder;
 import com.bubuwork.jf.om.entity.User;
-import com.bubuwork.jf.om.entity.view.MaintainOrderVO;
+import com.bubuwork.jf.om.view.MaintainOrderVO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bubuwork.jf.om.bean.MaintainOrderSearchBean;
 import com.bubuwork.jf.om.bean.MaintainOrderSearchResult;
-import com.bubuwork.jf.om.entity.view.MaintainOrderVO;
+import com.bubuwork.jf.om.view.MaintainOrderVO;
 import com.bubuwork.jf.om.service.MaintainOrderService;
 
 @Controller

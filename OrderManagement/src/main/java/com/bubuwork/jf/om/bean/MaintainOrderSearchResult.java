@@ -2,7 +2,7 @@ package com.bubuwork.jf.om.bean;
 
 import java.util.List;
 
-import com.bubuwork.jf.om.entity.view.MaintainOrderVO;
+import com.bubuwork.jf.om.view.MaintainOrderVO;
 
 public class MaintainOrderSearchResult {
   

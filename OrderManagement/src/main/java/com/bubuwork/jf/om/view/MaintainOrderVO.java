@@ -1,4 +1,4 @@
-package com.bubuwork.jf.om.entity.view;
+package com.bubuwork.jf.om.view;
 
 import java.io.Serializable;
 import java.util.List;
