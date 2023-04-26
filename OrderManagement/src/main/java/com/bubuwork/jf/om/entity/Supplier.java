@@ -1,10 +1,13 @@
 package com.bubuwork.jf.om.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+import lombok.Data;
+
 import java.util.Date;
 
 @Entity(name="SUPPLIER")
 @Table
+@Data
 public class Supplier {
 
     @Id

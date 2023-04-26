@@ -1,8 +1,8 @@
 package com.bubuwork.jf.om.entity;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -16,7 +16,7 @@ import java.util.Date;
 public class User {
   
   @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
+  @GeneratedValue(strategy= GenerationType.AUTO)
   @Column(name="ID")
   private Long id;
   

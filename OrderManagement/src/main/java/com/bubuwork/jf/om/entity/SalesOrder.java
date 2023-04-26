@@ -1,19 +1,11 @@
 package com.bubuwork.jf.om.entity;
 
+import jakarta.persistence.*;
+import lombok.Data;
+
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  * sales order
@@ -22,6 +14,7 @@ import javax.persistence.TemporalType;
  */
 @Entity(name="SALES_ORDER")
 @Table
+@Data
 public class SalesOrder {
   
   @Id
@@ -57,117 +50,5 @@ public class SalesOrder {
   
   @Column(name="COMMENT", length=2000)
   private String comment;
-  
-  
-  /**
-   * @return the id
-   */
-  public Long getId() {
-    return id;
-  }
 
-  /**
-   * @param id the id to set
-   */
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  /**
-   * @return the title
-   */
-  public String getTitle() {
-    return title;
-  }
-
-  /**
-   * @param title the title to set
-   */
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  /**
-   * @return the createBy
-   */
-  public String getCreateBy() {
-    return createBy;
-  }
-
-  /**
-   * @param createBy the createBy to set
-   */
-  public void setCreateBy(String createBy) {
-    this.createBy = createBy;
-  }
-
-  /**
-   * @return the createAt
-   */
-  public Date getCreateAt() {
-    return createAt;
-  }
-
-  /**
-   * @param createAt the createAt to set
-   */
-  public void setCreateAt(Date createAt) {
-    this.createAt = createAt;
-  }
-
-  /**
-   * @return the lastModify
-   */
-  public Date getLastModify() {
-    return lastModify;
-  }
-
-  /**
-   * @param lastModify the lastModify to set
-   */
-  public void setLastModify(Date lastModify) {
-    this.lastModify = lastModify;
-  }
-
-  /**
-   * @return the items
-   */
-  public List<OrderItem> getItems() {
-    return items;
-  }
-
-  /**
-   * @param items the items to set
-   */
-  public void setItems(List<OrderItem> items) {
-    this.items = items;
-  }
-
-  /**
-   * @return the changeBy
-   */
-  public String getChangeBy() {
-    return changeBy;
-  }
-
-  /**
-   * @param changeBy the changeBy to set
-   */
-  public void setChangeBy(String changeBy) {
-    this.changeBy = changeBy;
-  }
-
-  /**
-   * @return the comment
-   */
-  public String getComment() {
-    return comment;
-  }
-
-  /**
-   * @param comment the comment to set
-   */
-  public void setComment(String comment) {
-    this.comment = comment;
-  }
 }

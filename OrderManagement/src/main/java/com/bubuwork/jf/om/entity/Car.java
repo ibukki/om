@@ -1,18 +1,14 @@
 package com.bubuwork.jf.om.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import jakarta.persistence.*;
 
 @Entity(name="Car")
 @Table
 public class Car {
   
   @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
+  @GeneratedValue(strategy= GenerationType.AUTO)
   @Column(name="ID")
   private Long id;
   

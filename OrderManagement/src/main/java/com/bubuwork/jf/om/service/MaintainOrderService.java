@@ -1,22 +1,7 @@
 package com.bubuwork.jf.om.service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import javax.transaction.Transactional;
-
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
-import org.springframework.stereotype.Service;
-
 import com.bubuwork.jf.om.bean.MaintainOrderSearchBean;
 import com.bubuwork.jf.om.bean.MaintainOrderSearchResult;
-import com.bubuwork.jf.om.bean.MaintainOrderSpecs;
 import com.bubuwork.jf.om.dao.CarRepository;
 import com.bubuwork.jf.om.dao.GenericOrderItemRepository;
 import com.bubuwork.jf.om.dao.MaintainOrderRepository;
@@ -26,6 +11,16 @@ import com.bubuwork.jf.om.entity.GenericOrderItem;
 import com.bubuwork.jf.om.entity.MaintainOrder;
 import com.bubuwork.jf.om.entity.User;
 import com.bubuwork.jf.om.entity.view.MaintainOrderVO;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class MaintainOrderService {
@@ -42,7 +37,6 @@ public class MaintainOrderService {
   @Autowired
   private GenericOrderItemRepository gOrderItemRepo;
 
-  @Transactional
   public MaintainOrderVO saveOrder(MaintainOrderVO orderVO) {
     MaintainOrder order = orderVO.getOrder();
     order.setLastModify(new Date());
@@ -89,7 +83,6 @@ public class MaintainOrderService {
     return orderVO;
   }
 
-  @Transactional
   public void deleteOrder(Long orderId) {
     List<GenericOrderItem> dbItems = gOrderItemRepo.findByOrderId(orderId);
 
@@ -117,8 +110,7 @@ public class MaintainOrderService {
     }
     pageRequest = PageRequest.of(searchBean.getPageNum(),searchBean.getPageSize());
     Page<MaintainOrder> dbOrderPage = mOrderRepo
-        .findAll(Specification.where(MaintainOrderSpecs.hasPhone(searchBean.getMobile()))
-            .and(MaintainOrderSpecs.hasMaintainTypes(searchBean.getOrderType())), pageRequest);
+        .findAll(pageRequest);
     
     List<MaintainOrder> dbOrderList = dbOrderPage.getContent();
     if (dbOrderList != null && !dbOrderList.isEmpty()) {
