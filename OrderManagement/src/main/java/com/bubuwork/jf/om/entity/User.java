@@ -22,10 +22,13 @@ public class User implements UserDetails {
   @Id
   @GeneratedValue(strategy= GenerationType.AUTO)
   @Column(name="ID")
-  private Long id;
+  private Integer id;
   
   @Column(name="USER_NAME")
   private String username;
+
+  @Column(name="NICK_NAME")
+  private String nickname;
   
   @Column(name="EMAIL")
   private String email;
