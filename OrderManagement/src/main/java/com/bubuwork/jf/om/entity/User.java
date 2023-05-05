@@ -2,8 +2,12 @@ package com.bubuwork.jf.om.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * sales order
@@ -13,7 +17,7 @@ import java.util.Date;
 @Entity(name="User")
 @Table
 @Data
-public class User {
+public class User implements UserDetails {
   
   @Id
   @GeneratedValue(strategy= GenerationType.AUTO)
@@ -21,7 +25,7 @@ public class User {
   private Long id;
   
   @Column(name="USER_NAME")
-  private String userName;
+  private String username;
   
   @Column(name="EMAIL")
   private String email;
@@ -33,9 +37,34 @@ public class User {
   private String IDCard;
 
   @Column(name="PASS")
-  private String pass;
+  private String password;
 
   @Temporal(TemporalType.DATE)
   @Column(name="CREATE_AT")
   private Date createAt;
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return Set.of();
+  }
+
+  @Override
+  public boolean isAccountNonExpired() {
+    return false;
+  }
+
+  @Override
+  public boolean isAccountNonLocked() {
+    return false;
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return true;
+  }
 }
