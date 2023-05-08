@@ -1,6 +1,7 @@
 package com.bubuwork.jf.om.controller;
 
 import com.bubuwork.jf.om.bean.LoginForm;
+import com.bubuwork.jf.om.dao.UserRepository;
 import com.bubuwork.jf.om.entity.User;
 import com.bubuwork.jf.om.exception.AppException;
 import jakarta.servlet.ServletException;
@@ -16,13 +17,18 @@ import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @Slf4j
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
 @DependsOn("securityFilterChain")
 public class AuthController {
+
     private final RememberMeServices rememberMeServices;
+
+    private final UserRepository userRepo;
 
     @PostMapping("/login")
     public CurrentUser login(@RequestBody LoginForm form, BindingResult bindingResult,
@@ -53,6 +59,13 @@ public class AuthController {
     public LogoutResponse logout(HttpServletRequest request) throws ServletException {
         request.logout();
         return new LogoutResponse();
+    }
+
+    @PostMapping("/register")
+    public User register(HttpServletRequest request, @RequestBody User user) throws ServletException {
+        user.setCreateAt(new Date());
+        User dbUser = userRepo.save(user);
+        return dbUser;
     }
 
     @GetMapping("/current-user")

@@ -1,5 +1,7 @@
 package com.bubuwork.jf.om.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -12,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -22,19 +25,26 @@ import java.util.Arrays;
 @EnableWebSecurity
 public class LocalSecurityConfiguration {
 
-    @Bean
+    @Autowired
+    private ConfigurableBeanFactory beanFactory;
+
+    @Bean("securityFilterChain")
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
+        SecurityFilterChain chain = http
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/", "/home","api/login","/stat/**","/supplier/**").permitAll()
                         .anyRequest().authenticated()
                 ).csrf().disable()
                 .cors(Customizer.withDefaults())
+                .rememberMe(customizer -> customizer.alwaysRemember(true).key("remember-me"))
                 .exceptionHandling(customizer -> customizer
                         .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
-                .logout((logout) -> logout.permitAll());
+                .logout((logout) -> logout.permitAll()).build();
 
-        return http.build();
+        var rememberMeServices = http.getSharedObject(RememberMeServices.class);
+        beanFactory.registerSingleton("rememberMeServices", rememberMeServices);
+
+        return chain;
     }
 
     @Bean

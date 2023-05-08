@@ -46,6 +46,10 @@ public class User implements UserDetails {
   @Column(name="CREATE_AT")
   private Date createAt;
 
+  @Temporal(TemporalType.DATE)
+  @Column(name="LAST_LOGIN")
+  private Date lastLogin;
+
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return Set.of();
