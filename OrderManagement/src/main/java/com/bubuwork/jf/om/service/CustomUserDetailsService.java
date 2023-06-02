@@ -1,21 +1,34 @@
 package com.bubuwork.jf.om.service;
 
 import com.bubuwork.jf.om.dao.UserRepository;
-import lombok.RequiredArgsConstructor;
+import com.bubuwork.jf.om.entity.SysUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private final UserRepository repo;
+    @Autowired
+    private UserRepository repo;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return repo.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Username " + username + " not found"));
+        System.out.println("try to load user from db");
+        SysUser dbUser = repo.findByMobile(username);
+        if (dbUser == null){
+           dbUser = repo.findByEmail(username);
+           if(dbUser == null){
+               dbUser = repo.findByUsername(username);
+           }
+        }
+        if(dbUser != null){
+//            return org.springframework.security.core.userdetails.User.withUsername(dbUser.getEmail()).password(dbUser.getPassword()).authorities("USER").build();
+            return dbUser;
+        }else{
+            throw new UsernameNotFoundException("Username " + username + " not found");
+        }
     }
 }

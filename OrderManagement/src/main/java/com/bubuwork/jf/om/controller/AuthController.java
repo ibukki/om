@@ -1,8 +1,9 @@
 package com.bubuwork.jf.om.controller;
 
 import com.bubuwork.jf.om.bean.LoginForm;
+import com.bubuwork.jf.om.bean.SimpleResponse;
 import com.bubuwork.jf.om.dao.UserRepository;
-import com.bubuwork.jf.om.entity.User;
+import com.bubuwork.jf.om.entity.SysUser;
 import com.bubuwork.jf.om.exception.AppException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.validation.BindingResult;
@@ -30,7 +32,9 @@ public class AuthController {
 
     private final UserRepository userRepo;
 
-    @PostMapping("/login")
+    private final PasswordEncoder passwordEncoder;
+
+    @PostMapping("/logon")
     public CurrentUser login(@RequestBody LoginForm form, BindingResult bindingResult,
                              HttpServletRequest request, HttpServletResponse response) {
 
@@ -45,11 +49,11 @@ public class AuthController {
         try {
             request.login(form.getUsername(), form.getPassword());
         } catch (ServletException e) {
-            throw new AppException("Invalid username or password");
+            throw new AppException(e.getMessage());
         }
 
         var auth = (Authentication) request.getUserPrincipal();
-        var user = (User) auth.getPrincipal();
+        var user = (SysUser) auth.getPrincipal();
 
         rememberMeServices.loginSuccess(request, response, auth);
         return new CurrentUser(user.getId(), user.getNickname());
@@ -62,14 +66,26 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public User register(HttpServletRequest request, @RequestBody User user) throws ServletException {
+    public SimpleResponse register(HttpServletRequest request, @RequestBody SysUser user) throws ServletException {
         user.setCreateAt(new Date());
-        User dbUser = userRepo.save(user);
-        return dbUser;
+
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+
+        SysUser dbUser = userRepo.save(user);
+        SimpleResponse srp = new SimpleResponse();
+        if(dbUser.getId() > 0){
+            srp.setCode(0);
+            srp.setMessage("Success");
+        }else{
+            srp.setMessage("Failed");
+            srp.setCode(500);
+        }
+        return srp;
     }
 
     @GetMapping("/current-user")
-    public CurrentUser getCurrentUser(@AuthenticationPrincipal User user) {
+    public CurrentUser getCurrentUser(@AuthenticationPrincipal SysUser user) {
         return new CurrentUser(user.getId(), user.getNickname());
     }
 

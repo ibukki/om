@@ -17,7 +17,7 @@ import java.util.Set;
 @Entity(name="User")
 @Table
 @Data
-public class User implements UserDetails {
+public class SysUser implements UserDetails {
   
   @Id
   @GeneratedValue(strategy= GenerationType.AUTO)
@@ -57,12 +57,12 @@ public class User implements UserDetails {
 
   @Override
   public boolean isAccountNonExpired() {
-    return false;
+    return true;
   }
 
   @Override
   public boolean isAccountNonLocked() {
-    return false;
+    return true;
   }
 
   @Override

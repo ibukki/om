@@ -3,14 +3,14 @@ package com.bubuwork.jf.om.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.bubuwork.jf.om.entity.User;
-
-import java.util.Optional;
+import com.bubuwork.jf.om.entity.SysUser;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer>{
-  public User findByMobile(String mobile);
+public interface UserRepository extends JpaRepository<SysUser, Integer>{
+  public SysUser findByMobile(String mobile);
 
-  Optional<User> findByUsername(String username);
+  public SysUser findByEmail(String email);
+
+  SysUser findByUsername(String username);
 
 }

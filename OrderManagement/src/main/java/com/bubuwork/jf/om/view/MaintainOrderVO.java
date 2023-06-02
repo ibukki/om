@@ -6,7 +6,7 @@ import java.util.List;
 import com.bubuwork.jf.om.entity.Car;
 import com.bubuwork.jf.om.entity.GenericOrderItem;
 import com.bubuwork.jf.om.entity.MaintainOrder;
-import com.bubuwork.jf.om.entity.User;
+import com.bubuwork.jf.om.entity.SysUser;
 
 public class MaintainOrderVO implements Serializable{
   
@@ -19,7 +19,7 @@ public class MaintainOrderVO implements Serializable{
   
   private Car car;
   
-  private User user;
+  private SysUser user;
  
   private List<GenericOrderItem> items;
 
@@ -67,7 +67,7 @@ public class MaintainOrderVO implements Serializable{
   /**
    * @return the user
    */
-  public User getUser() {
+  public SysUser getUser() {
     return user;
   }
 
@@ -83,7 +83,7 @@ public class MaintainOrderVO implements Serializable{
   /**
    * @param user the user to set
    */
-  public void setUser(User user) {
+  public void setUser(SysUser user) {
     this.user = user;
   }
   

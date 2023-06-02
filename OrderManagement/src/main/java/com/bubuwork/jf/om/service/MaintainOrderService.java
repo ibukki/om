@@ -9,7 +9,7 @@ import com.bubuwork.jf.om.dao.UserRepository;
 import com.bubuwork.jf.om.entity.Car;
 import com.bubuwork.jf.om.entity.GenericOrderItem;
 import com.bubuwork.jf.om.entity.MaintainOrder;
-import com.bubuwork.jf.om.entity.User;
+import com.bubuwork.jf.om.entity.SysUser;
 import com.bubuwork.jf.om.view.MaintainOrderVO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,9 +57,9 @@ public class MaintainOrderService {
     
     //check user
     if(orderVO.getUser() != null && !StringUtils.isEmpty(orderVO.getUser().getMobile())){
-      User dbuser = userRepo.findByMobile(orderVO.getUser().getMobile());
+      SysUser dbuser = userRepo.findByMobile(orderVO.getUser().getMobile());
       if(dbuser == null){
-        User user = orderVO.getUser();
+        SysUser user = orderVO.getUser();
         userRepo.save(user);
       }
     }
