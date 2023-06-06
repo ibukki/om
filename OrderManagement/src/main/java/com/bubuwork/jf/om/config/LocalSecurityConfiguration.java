@@ -44,7 +44,7 @@ public class LocalSecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         SecurityFilterChain chain = http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/home","/api/logon","/api/register","/stat/**","/supplier/**").permitAll()
+                        .requestMatchers("/", "/home","/api/logon","/api/register").permitAll()
                         .anyRequest().authenticated()
                 ).csrf().disable()
                 .cors(Customizer.withDefaults())

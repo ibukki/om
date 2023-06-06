@@ -84,7 +84,7 @@ public class AuthController {
         return srp;
     }
 
-    @GetMapping("/current-user")
+    @GetMapping("/currentUser")
     public CurrentUser getCurrentUser(@AuthenticationPrincipal SysUser user) {
         return new CurrentUser(user.getId(), user.getNickname());
     }
