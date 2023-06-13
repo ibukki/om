@@ -42,6 +42,9 @@ public class Supplier {
     @Column(name="ADDRESS3")
     private String address3;
 
+    @Column(name="POSTCODE")
+    private String postcode;
+
     @Temporal(TemporalType.DATE)
     @Column(name = "CREATE_AT")
     private Date createAt;
@@ -49,4 +52,7 @@ public class Supplier {
     @Temporal(TemporalType.DATE)
     @Column(name = "LAST_MODIFY")
     private Date lastModify;
+
+    @Column(name = "CREATE_BY")
+    private Integer createBy;
 }
