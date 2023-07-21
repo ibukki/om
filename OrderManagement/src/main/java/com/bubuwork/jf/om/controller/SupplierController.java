@@ -25,4 +25,14 @@ public class SupplierController {
     public List<SupplierVO> listSupplier(){
         return supplierService.listSuppliers();
     }
+
+    @GetMapping("/{supplierId}")
+    public SupplierVO getSupplierById(@PathVariable String supplierId){
+        return supplierService.getSupplierById(supplierId);
+    }
+
+    @DeleteMapping("/{supplierId}")
+    public int deleteSupplierById(@PathVariable String supplierId){
+        return supplierService.deleteSupplierById(supplierId);
+    }
 }

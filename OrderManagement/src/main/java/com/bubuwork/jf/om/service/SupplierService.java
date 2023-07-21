@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SupplierService {
@@ -40,5 +41,24 @@ public class SupplierService {
             }
         }
         return voList;
+    }
+
+    public SupplierVO getSupplierById(String supplierId) {
+        SupplierVO suppVO = null;
+        Optional<Supplier> dbSupplier = supplierRepository.findById(Long.valueOf(supplierId));
+        if(dbSupplier.isPresent()){
+            suppVO = new SupplierVO();
+            BeanUtils.copyProperties(dbSupplier, suppVO);
+        }
+        return suppVO;
+    }
+
+    public int deleteSupplierById(String supplierId) {
+        try{
+            supplierRepository.deleteById(Long.valueOf(supplierId));
+        }catch (Exception e){
+            return -1;
+        }
+        return 1;
     }
 }
