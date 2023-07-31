@@ -48,7 +48,7 @@ public class SupplierService {
         Optional<Supplier> dbSupplier = supplierRepository.findById(Long.valueOf(supplierId));
         if(dbSupplier.isPresent()){
             suppVO = new SupplierVO();
-            BeanUtils.copyProperties(dbSupplier, suppVO);
+            BeanUtils.copyProperties(dbSupplier.get(), suppVO);
         }
         return suppVO;
     }
